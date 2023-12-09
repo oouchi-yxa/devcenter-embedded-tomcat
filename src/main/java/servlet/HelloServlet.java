@@ -21,6 +21,8 @@ public class HelloServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         ServletOutputStream out = resp.getOutputStream();
         out.write("hello heroku サンプル 日本語を書いてみる".getBytes("UTF-8"));
+        out.write("<hr />".getBytes("UTF-8"));
+        out.write("<a href=\"/index.jsp\">JSPのURLに遷移</a>".getBytes("UTF-8"));
         out.flush();
         out.close();
     }

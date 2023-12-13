@@ -47,7 +47,7 @@ public class HelloServlet2 extends HttpServlet {
                     }
 
                     out.write("<br /><h2>attribute</h2><hr />".getBytes("UTF-8"));
-                    Enumeration<String> attributeNames = servletRequest.getAttributeNames();
+                    Enumeration<String> attributeNames = req.getAttributeNames();
                     while (attributeNames.hasMoreElements()) {
                                     tmp = attributeNames.nextElement();
                                     tmp = tmp + " : " + req.getAttribute(tmp) + "<br />\n";

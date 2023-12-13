@@ -19,8 +19,8 @@ public class HelloServlet2 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        req.setCharacterEncoding("UTF-8");
+                    
+                    req.setCharacterEncoding("UTF-8");
 
                     resp.setContentType("text/html;charset=UTF-8");
                     ServletOutputStream out = resp.getOutputStream();
@@ -33,7 +33,7 @@ public class HelloServlet2 extends HttpServlet {
                     if (headerNames != null) {
                             while (headerNames.hasMoreElements()) {
                                     tmp = headerNames.nextElement();
-                                    tmp = tmp + " : " + req.getHeader(tmp) + "<br />\n";
+                                    tmp = tmp + " : " + req.getHeaders(tmp) + "<br />\n";
                                     out.write(tmp.getBytes("UTF-8"));
                             }
                     }
@@ -42,7 +42,7 @@ public class HelloServlet2 extends HttpServlet {
                     Enumeration<String> parameterNames = req.getParameterNames();
                     while (parameterNames.hasMoreElements()) {
                                     tmp = parameterNames.nextElement();
-                                    tmp = tmp + " : " + req.getParameter(tmp) + "<br />\n";
+                                    tmp = tmp + " : " + req.getParameterValues(tmp) + "<br />\n";
                                     out.write(tmp.getBytes("UTF-8"));
                     }
 

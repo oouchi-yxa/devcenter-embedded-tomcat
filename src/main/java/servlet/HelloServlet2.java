@@ -33,7 +33,7 @@ public class HelloServlet2 extends HttpServlet {
                     if (headerNames != null) {
                             while (headerNames.hasMoreElements()) {
                                     tmp = headerNames.nextElement();
-                                    tmp = tmp + " : " + req.getHeaders(tmp) + "<br />\n";
+                                    tmp = tmp + " : " + String.join(",",req.getHeaders(tmp)) + "<br />\n";
                                     out.write(tmp.getBytes("UTF-8"));
                             }
                     }
@@ -42,7 +42,7 @@ public class HelloServlet2 extends HttpServlet {
                     Enumeration<String> parameterNames = req.getParameterNames();
                     while (parameterNames.hasMoreElements()) {
                                     tmp = parameterNames.nextElement();
-                                    tmp = tmp + " : " + req.getParameterValues(tmp) + "<br />\n";
+                                    tmp = tmp + " : " + String.join(",",req.getParameterValues(tmp)) + "<br />\n";
                                     out.write(tmp.getBytes("UTF-8"));
                     }
 

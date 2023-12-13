@@ -6,7 +6,7 @@
 <a href="/hello">hello サーブレット</a>
 <hr />
 
-<a href="/hello2?a=b&a=3&b=あいうえお">hello サーブレット</a>
+<a href="/hello2?a=b&a=3&b=あいうえお">パラメタ表示サーブレット</a>
 <hr />
 
 </body>

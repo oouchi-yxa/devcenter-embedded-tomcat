@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
         name = "MyServlet2", 
         urlPatterns = {"/hello2"}
     )
-public class HelloServlet extends HttpServlet2 {
+public class HelloServlet2 extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

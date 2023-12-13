@@ -22,14 +22,6 @@ public class HelloServlet2 extends HttpServlet {
 
         req.setCharacterEncoding("UTF-8");
 
-
-                    Enumeration names = req.getParameterNames();
-                    while (names.hasMoreElements()){
-                            String name = (String)names.nextElement();
-                    }
-                    String tmp = "";
-                    
-
                     resp.setContentType("text/html;charset=UTF-8");
                     ServletOutputStream out = resp.getOutputStream();
                     out.write("パラメータ出力 サンプル".getBytes("UTF-8"));
@@ -48,7 +40,7 @@ public class HelloServlet2 extends HttpServlet {
                     Enumeration<String> attributeNames = req.getAttributeNames();
                     while (attributeNames.hasMoreElements()) {
                                     tmp = attributeNames.nextElement();
-                                    tmp = tmp + " : " + req.getParameter(tmp) + "<br />\n";
+                                    tmp = tmp + " : " + req.getAttribute(tmp) + "<br />\n";
                                     out.write(tmp.getBytes("UTF-8"));
                     }
 

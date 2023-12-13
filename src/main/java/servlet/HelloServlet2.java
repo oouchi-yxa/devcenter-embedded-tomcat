@@ -19,8 +19,6 @@ public class HelloServlet2 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-                    
-                    req.setCharacterEncoding("UTF-8");
 
                     resp.setContentType("text/html;charset=UTF-8");
                     ServletOutputStream out = resp.getOutputStream();
@@ -43,6 +41,15 @@ public class HelloServlet2 extends HttpServlet {
                             }
                     }
 
+                    out.write("<br /><h2>attribute</h2><hr />".getBytes("UTF-8"));
+                    Enumeration<String> attributeNames = req.getAttributeNames();
+                    while (attributeNames.hasMoreElements()) {
+                                    tmp = attributeNames.nextElement();
+                                    tmp = tmp + " : " + req.getAttribute(tmp) + "<br />\n";
+                                    out.write(tmp.getBytes("UTF-8"));
+                    }
+
+                    req.setCharacterEncoding("UTF-8");
                     out.write("<br /><h2>parameter</h2><hr />".getBytes("UTF-8"));
                     Enumeration<String> parameterNames = req.getParameterNames();
                     while (parameterNames.hasMoreElements()) {
@@ -54,14 +61,6 @@ public class HelloServlet2 extends HttpServlet {
                                                     out.write(p.getBytes("UTF-8"));
                                             }
                                     }
-                    }
-
-                    out.write("<br /><h2>attribute</h2><hr />".getBytes("UTF-8"));
-                    Enumeration<String> attributeNames = req.getAttributeNames();
-                    while (attributeNames.hasMoreElements()) {
-                                    tmp = attributeNames.nextElement();
-                                    tmp = tmp + " : " + req.getAttribute(tmp) + "<br />\n";
-                                    out.write(tmp.getBytes("UTF-8"));
                     }
 
         out.write("<hr />".getBytes("UTF-8"));

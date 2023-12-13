@@ -47,10 +47,10 @@ public class HelloServlet2 extends HttpServlet {
                     Enumeration<String> parameterNames = req.getParameterNames();
                     while (parameterNames.hasMoreElements()) {
                                     tmp = parameterNames.nextElement();
-                                    Enumeration<String> paramVals = req.getParameterValues(tmp);
+                                    String[] paramVals = req.getParameterValues(tmp);
                                     if (paramVals != null) {
-                                            while (paramVals.hasMoreElements()) {
-                                                    String p = tmp + " : " + paramVals.nextElement() + "<br />\n";
+                                            for (String v : paramVals) {
+                                                    String p = tmp + " : " + v + "<br />\n";
                                                     out.write(p.getBytes("UTF-8"));
                                             }
                                     }

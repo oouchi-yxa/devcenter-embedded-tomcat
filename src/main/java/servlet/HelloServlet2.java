@@ -33,8 +33,13 @@ public class HelloServlet2 extends HttpServlet {
                     if (headerNames != null) {
                             while (headerNames.hasMoreElements()) {
                                     tmp = headerNames.nextElement();
-                                    tmp = tmp + " : " + String.join(",",req.getHeaders(tmp)) + "<br />\n";
-                                    out.write(tmp.getBytes("UTF-8"));
+                                    Enumeration<String> headerVals = req.getHeaders(tmp);
+                                    if (headerVals != null) {
+                                            while (headerVals.hasMoreElements()) {
+                                                    String p = tmp + " : " + headerVals.nextElement() + "<br />\n";
+                                                    out.write(tmp.getBytes("UTF-8"));
+                                            }
+                                    }
                             }
                     }
 
@@ -42,8 +47,13 @@ public class HelloServlet2 extends HttpServlet {
                     Enumeration<String> parameterNames = req.getParameterNames();
                     while (parameterNames.hasMoreElements()) {
                                     tmp = parameterNames.nextElement();
-                                    tmp = tmp + " : " + String.join(",",req.getParameterValues(tmp)) + "<br />\n";
-                                    out.write(tmp.getBytes("UTF-8"));
+                                    Enumeration<String> paramVals = req.getHeaders(tmp);
+                                    if (paramVals != null) {
+                                            while (paramVals.hasMoreElements()) {
+                                                    String p = tmp + " : " + paramVals.nextElement() + "<br />\n";
+                                                    out.write(tmp.getBytes("UTF-8"));
+                                            }
+                                    }
                     }
 
                     out.write("<br /><h2>attribute</h2><hr />".getBytes("UTF-8"));

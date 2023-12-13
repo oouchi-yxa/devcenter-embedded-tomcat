@@ -4,6 +4,10 @@
 <h2>Hello Heroku!</h2>
 
 <a href="/hello">hello サーブレット</a>
+<hr />
+
+<a href="/hello2?a=b&a=3&b=あいうえお">hello サーブレット</a>
+<hr />
 
 </body>
 </html>

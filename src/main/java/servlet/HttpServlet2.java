@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-        name = "MyServlet", 
-        urlPatterns = {"/hello"}
+        name = "MyServlet2", 
+        urlPatterns = {"/hello2"}
     )
-public class HelloServlet extends HttpServlet {
+public class HelloServlet extends HttpServlet2 {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

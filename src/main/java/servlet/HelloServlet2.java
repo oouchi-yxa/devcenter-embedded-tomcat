@@ -47,7 +47,7 @@ public class HelloServlet2 extends HttpServlet {
                     Enumeration<String> parameterNames = req.getParameterNames();
                     while (parameterNames.hasMoreElements()) {
                                     tmp = parameterNames.nextElement();
-                                    Enumeration<String> paramVals = req.getHeaders(tmp);
+                                    Enumeration<String> paramVals = req.getParameterValues(tmp);
                                     if (paramVals != null) {
                                             while (paramVals.hasMoreElements()) {
                                                     String p = tmp + " : " + paramVals.nextElement() + "<br />\n";

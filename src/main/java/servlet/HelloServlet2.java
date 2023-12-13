@@ -22,7 +22,7 @@ public class HelloServlet2 extends HttpServlet {
 
       req.setCharacterEncoding("UTF-8");
 
-      Enumeration names = request.getParameterNames();
+      Enumeration names = req.getParameterNames();
       while (names.hasMoreElements()){
               String name = (String)names.nextElement();
       }

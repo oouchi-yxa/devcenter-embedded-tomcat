@@ -28,7 +28,7 @@ public class HelloServlet2 extends HttpServlet {
 
                     String tmp = "";
                     
-                    out.write("header <hr />".getBytes("UTF-8"));
+                    out.write("<br /> header <hr />".getBytes("UTF-8"));
                     Enumeration<String> headerNames = req.getHeaderNames();
                     if (headerNames != null) {
                             while (headerNames.hasMoreElements()) {
@@ -38,7 +38,7 @@ public class HelloServlet2 extends HttpServlet {
                             }
                     }
 
-                    out.write("parameter <hr />".getBytes("UTF-8"));
+                    out.write("<br /> parameter <hr />".getBytes("UTF-8"));
                     Enumeration<String> parameterNames = req.getParameterNames();
                     while (parameterNames.hasMoreElements()) {
                                     tmp = parameterNames.nextElement();

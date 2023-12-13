@@ -37,7 +37,7 @@ public class HelloServlet2 extends HttpServlet {
                                     if (headerVals != null) {
                                             while (headerVals.hasMoreElements()) {
                                                     String p = tmp + " : " + headerVals.nextElement() + "<br />\n";
-                                                    out.write(tmp.getBytes("UTF-8"));
+                                                    out.write(p.getBytes("UTF-8"));
                                             }
                                     }
                             }
@@ -51,7 +51,7 @@ public class HelloServlet2 extends HttpServlet {
                                     if (paramVals != null) {
                                             while (paramVals.hasMoreElements()) {
                                                     String p = tmp + " : " + paramVals.nextElement() + "<br />\n";
-                                                    out.write(tmp.getBytes("UTF-8"));
+                                                    out.write(p.getBytes("UTF-8"));
                                             }
                                     }
                     }

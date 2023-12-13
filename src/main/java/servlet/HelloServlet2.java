@@ -26,6 +26,8 @@ public class HelloServlet2 extends HttpServlet {
                     ServletOutputStream out = resp.getOutputStream();
                     out.write("パラメータ出力 サンプル<br />\n".getBytes("UTF-8"));
 
+                    String tmp = "";
+                    
                     out.write("header <hr />".getBytes("UTF-8"));
                     Enumeration<String> headerNames = req.getHeaderNames();
                     if (headerNames != null) {

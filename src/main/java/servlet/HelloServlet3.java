@@ -21,14 +21,13 @@ public class HelloServlet3 extends HttpServlet {
             throws ServletException, IOException {
 
                     //. BODYを全部取り出す
-//                    BufferedReader br = new BufferedReader(req.getReader());
-//                    String strRequest = "";
-//                    String tmp = br.readLine();
-//                    while (tmp != null) {
-//                            strRequest += tmp + "\n";
-//                            tmp = br.readLine();
-//                    }
-                    String tmp = "";
+                    BufferedReader br = new BufferedReader(req.getReader());
+                    String strRequest = "";
+                    String tmp = br.readLine();
+                    while (tmp != null) {
+                            strRequest += tmp + "\n";
+                            tmp = br.readLine();
+                    }
 
                     resp.setContentType("text/html;charset=UTF-8");
                     ServletOutputStream out = resp.getOutputStream();
@@ -37,24 +36,10 @@ public class HelloServlet3 extends HttpServlet {
                             out.write(req.getContentType().getBytes("UTF-8"));
                     }
                     out.write("<hr />".getBytes("UTF-8"));
-                    if (tmp != null) {
-                            out.write(tmp.getBytes("UTF-8"));
+                    if (strRequest != null) {
+                            out.write(strRequest.getBytes("UTF-8"));
                     }
 
-                    req.setCharacterEncoding("UTF-8");
-                    out.write("<br /><h2>parameter</h2><hr />".getBytes("UTF-8"));
-                    Enumeration<String> parameterNames = req.getParameterNames();
-                    while (parameterNames.hasMoreElements()) {
-                                    tmp = parameterNames.nextElement();
-                                    String[] paramVals = req.getParameterValues(tmp);
-                                    if (paramVals != null) {
-                                            for (String v : paramVals) {
-                                                    String p = tmp + " : " + v + "<br />\n";
-                                                    out.write(p.getBytes("UTF-8"));
-                                            }
-                                    }
-                    }
-                    
                     out.write("<hr />".getBytes("UTF-8"));
                     out.flush();
                     out.close();

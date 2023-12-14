@@ -21,51 +21,24 @@ public class HelloServlet3 extends HttpServlet {
             throws ServletException, IOException {
 
                     resp.setContentType("text/html;charset=UTF-8");
+
+                    //. BODYを全部取り出す
+                    BufferedReader br = new BufferedReader(req.getReader());
+                    String strRequest = "";
+                    String tmp = br.readLine();
+                    while (tmp != null) {
+                            strRequest += tmp + "\n";
+                            tmp = br.readLine();
+                    }
+
                     ServletOutputStream out = resp.getOutputStream();
-                    out.write("<h1>パラメータ出力 サンプル</h1><br />\n".getBytes("UTF-8"));
-
-                    String tmp = "";
-                    
-                    out.write("<br /><h2>header</h2><hr />".getBytes("UTF-8"));
-                    Enumeration<String> headerNames = req.getHeaderNames();
-                    if (headerNames != null) {
-                            while (headerNames.hasMoreElements()) {
-                                    tmp = headerNames.nextElement();
-                                    Enumeration<String> headerVals = req.getHeaders(tmp);
-                                    if (headerVals != null) {
-                                            while (headerVals.hasMoreElements()) {
-                                                    String p = tmp + " : " + headerVals.nextElement() + "<br />\n";
-                                                    out.write(p.getBytes("UTF-8"));
-                                            }
-                                    }
-                            }
-                    }
-
-                    out.write("<br /><h2>attribute</h2><hr />".getBytes("UTF-8"));
-                    Enumeration<String> attributeNames = req.getAttributeNames();
-                    while (attributeNames.hasMoreElements()) {
-                                    tmp = attributeNames.nextElement();
-                                    tmp = tmp + " : " + req.getAttribute(tmp) + "<br />\n";
-                                    out.write(tmp.getBytes("UTF-8"));
-                    }
-
-                    req.setCharacterEncoding("UTF-8");
-                    out.write("<br /><h2>parameter</h2><hr />".getBytes("UTF-8"));
-                    Enumeration<String> parameterNames = req.getParameterNames();
-                    while (parameterNames.hasMoreElements()) {
-                                    tmp = parameterNames.nextElement();
-                                    String[] paramVals = req.getParameterValues(tmp);
-                                    if (paramVals != null) {
-                                            for (String v : paramVals) {
-                                                    String p = tmp + " : " + v + "<br />\n";
-                                                    out.write(p.getBytes("UTF-8"));
-                                            }
-                                    }
-                    }
-
-        out.write("<hr />".getBytes("UTF-8"));
-        out.flush();
-        out.close();
+                    out.write("<h1>BODY出力 サンプル</h1><br />\n".getBytes("UTF-8"));
+                    out.write(req.getConentType().getBytes("UTF-8"));
+                    out.write("<hr />".getBytes("UTF-8"));
+                    out.write(tmp.getBytes("UTF-8"));
+                    out.write("<hr />".getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
     }
     
 }

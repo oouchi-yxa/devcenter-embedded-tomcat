@@ -33,9 +33,13 @@ public class HelloServlet3 extends HttpServlet {
 
                     ServletOutputStream out = resp.getOutputStream();
                     out.write("<h1>BODY出力 サンプル</h1><br />\n".getBytes("UTF-8"));
-//                    out.write(req.getContentType().getBytes("UTF-8"));
+                    if (req.getContentType() != null) {
+                            out.write(req.getContentType().getBytes("UTF-8"));
+                    }
                     out.write("<hr />".getBytes("UTF-8"));
-                    out.write(tmp.getBytes("UTF-8"));
+                    if (tmp != null) {
+                            out.write(tmp.getBytes("UTF-8"));
+                    }
                     out.write("<hr />".getBytes("UTF-8"));
                     out.flush();
                     out.close();

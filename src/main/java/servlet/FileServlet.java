@@ -21,12 +21,18 @@ public class FileServlet extends HttpServlet {
             throws ServletException, IOException {
 
                     resp.setContentType("text/html;charset=UTF-8");
+
                     ServletOutputStream out = resp.getOutputStream();
                     out.write("<h1>ファイル サンプル</h1><br />\n".getBytes("UTF-8"));
 
                     String tmp = "";
 
                     req.setCharacterEncoding("UTF-8");
+
+                    tmp = req.getPathInfo();
+                    out.write("<br /><h2>pathInfo</h2><hr />".getBytes("UTF-8"));
+                    out.write(tmp.getBytes("UTF-8"));
+                    
                     out.write("<br /><h2>parameter</h2><hr />".getBytes("UTF-8"));
                     Enumeration<String> parameterNames = req.getParameterNames();
                     while (parameterNames.hasMoreElements()) {
@@ -40,9 +46,9 @@ public class FileServlet extends HttpServlet {
                                     }
                     }
 
-        out.write("<hr />".getBytes("UTF-8"));
-        out.flush();
-        out.close();
+                    out.write("<hr />".getBytes("UTF-8"));
+                    out.flush();
+                    out.close();
     }
     
 }

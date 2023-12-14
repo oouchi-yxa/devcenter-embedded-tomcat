@@ -39,6 +39,24 @@ public class HelloServlet3 extends HttpServlet {
                     if (tmp != null) {
                             out.write(tmp.getBytes("UTF-8"));
                     }
+
+                    String tmp = "";
+                    req.setCharacterEncoding("UTF-8");
+                    out.write("<br /><h2>parameter</h2><hr />".getBytes("UTF-8"));
+                    Enumeration<String> parameterNames = req.getParameterNames();
+                    while (parameterNames.hasMoreElements()) {
+                                    tmp = parameterNames.nextElement();
+                                    String[] paramVals = req.getParameterValues(tmp);
+                                    if (paramVals != null) {
+                                            for (String v : paramVals) {
+                                                    String p = tmp + " : " + v + "<br />\n";
+                                                    out.write(p.getBytes("UTF-8"));
+                                            }
+                                    }
+                    }
+
+
+                    
                     out.write("<hr />".getBytes("UTF-8"));
                     out.flush();
                     out.close();

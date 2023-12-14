@@ -21,6 +21,7 @@ public class HelloServlet3 extends HttpServlet {
             throws ServletException, IOException {
 
                     //. BODYを全部取り出す
+                    req.setCharacterEncoding("UTF-8");
                     BufferedReader br = new BufferedReader(req.getReader());
                     String strRequest = "";
                     String tmp = br.readLine();

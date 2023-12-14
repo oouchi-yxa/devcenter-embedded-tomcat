@@ -40,7 +40,6 @@ public class HelloServlet3 extends HttpServlet {
                             out.write(tmp.getBytes("UTF-8"));
                     }
 
-                    String tmp = "";
                     req.setCharacterEncoding("UTF-8");
                     out.write("<br /><h2>parameter</h2><hr />".getBytes("UTF-8"));
                     Enumeration<String> parameterNames = req.getParameterNames();

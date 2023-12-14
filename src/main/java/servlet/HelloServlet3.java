@@ -36,7 +36,24 @@ public class HelloServlet3 extends HttpServlet {
                     if (req.getContentType() != null) {
                             out.write(req.getContentType().getBytes("UTF-8"));
                     }
-                    out.write("<hr />".getBytes("UTF-8"));
+
+                    out.write("<br /><h2>header</h2><hr />".getBytes("UTF-8"));
+                    Enumeration<String> headerNames = req.getHeaderNames();
+                    if (headerNames != null) {
+                            while (headerNames.hasMoreElements()) {
+                                    tmp = headerNames.nextElement();
+                                    Enumeration<String> headerVals = req.getHeaders(tmp);
+                                    if (headerVals != null) {
+                                            while (headerVals.hasMoreElements()) {
+                                                    String p = tmp + " : " + headerVals.nextElement() + "<br />\n";
+                                                    out.write(p.getBytes("UTF-8"));
+                                            }
+                                    }
+                            }
+                    }
+
+
+                    out.write("<br /><h2>body</h2><hr />".getBytes("UTF-8"));
                     if (strRequest != null) {
                             out.write(strRequest.getBytes("UTF-8"));
                     }

@@ -16,5 +16,8 @@
 <input type="submit">
 </form>
 
+<a href="/file/xxx/yyy/zzz/a.gif?a=b&b=c">S3アクセス用のパス指定（"/file/xxx/yyy/zzz/a.gif?a=b&b=c"）</a>
+<hr />
+
 </body>
 </html>

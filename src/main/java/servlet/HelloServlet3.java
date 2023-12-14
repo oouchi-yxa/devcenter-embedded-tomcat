@@ -21,13 +21,14 @@ public class HelloServlet3 extends HttpServlet {
             throws ServletException, IOException {
 
                     //. BODYを全部取り出す
-                    BufferedReader br = new BufferedReader(req.getReader());
-                    String strRequest = "";
-                    String tmp = br.readLine();
-                    while (tmp != null) {
-                            strRequest += tmp + "\n";
-                            tmp = br.readLine();
-                    }
+//                    BufferedReader br = new BufferedReader(req.getReader());
+//                    String strRequest = "";
+//                    String tmp = br.readLine();
+//                    while (tmp != null) {
+//                            strRequest += tmp + "\n";
+//                            tmp = br.readLine();
+//                    }
+                    String tmp = "";
 
                     resp.setContentType("text/html;charset=UTF-8");
                     ServletOutputStream out = resp.getOutputStream();
@@ -53,8 +54,6 @@ public class HelloServlet3 extends HttpServlet {
                                             }
                                     }
                     }
-
-
                     
                     out.write("<hr />".getBytes("UTF-8"));
                     out.flush();

@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
         name = "MyServlet3", 
-        urlPatterns = {"/hello3"},
-        method = { RequestMethod.POST }
+        urlPatterns = {"/hello3"}
     )
 public class HelloServlet3 extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
                     resp.setContentType("text/html;charset=UTF-8");

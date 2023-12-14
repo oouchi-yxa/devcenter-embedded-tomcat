@@ -37,7 +37,7 @@ public class HelloServlet3 extends HttpServlet {
                             out.write(req.getContentType().getBytes("UTF-8"));
                     }
 
-                    out.write("<br /><h2>header</h2><hr />".getBytes("UTF-8"));
+                    out.write("<br /><h2>header</h2><hr />\n".getBytes("UTF-8"));
                     Enumeration<String> headerNames = req.getHeaderNames();
                     if (headerNames != null) {
                             while (headerNames.hasMoreElements()) {
@@ -53,12 +53,12 @@ public class HelloServlet3 extends HttpServlet {
                     }
 
 
-                    out.write("<br /><h2>body</h2><hr />".getBytes("UTF-8"));
+                    out.write("<br /><h2>body</h2><hr />\n".getBytes("UTF-8"));
                     if (strRequest != null) {
                             out.write(strRequest.getBytes("UTF-8"));
                     }
 
-                    out.write("<hr />".getBytes("UTF-8"));
+                    out.write("<hr />\n".getBytes("UTF-8"));
                     out.flush();
                     out.close();
     }

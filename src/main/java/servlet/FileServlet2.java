@@ -62,17 +62,18 @@ public class FileServlet2 extends HttpServlet {
             // 設定値取り出し
             Pattern p = Pattern.compile("^https://(.*)\\.s3\\.amazonaws\\.com/(.*)$");
             Matcher m = p.matcher(cloudcubeUrl);
+            String bucket = "";
+            String basePrefix = "";
             if (m.find()){
-                System.out.println(m.group(1));  // 123
-                System.out.println(m.group(2));  // 4567
+                bucket = m.group(1);
+                basePrefix = m.group(2) + "/";
             }
-
 
             // https://cloud-cube-us2.s3.amazonaws.com/yygxgacc5b8a
             ListObjectsRequest listObjects = ListObjectsRequest
                     .builder()
-                    .bucket("cloud-cube-us2")
-                    .prefix("yygxgacc5b8a/")
+                    .bucket(bucket)
+                    .prefix(basePrefix)
                     .build();
 
             ListObjectsResponse res = s3Client.listObjects(listObjects);

@@ -1,5 +1,20 @@
 package servlet;
 
+
+import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.S3AsyncClient;
+import software.amazon.awssdk.services.s3.model.*;
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.services.s3.model.ObjectIdentifier;
+import software.amazon.awssdk.transfer.s3.S3TransferManager;
+import software.amazon.awssdk.transfer.s3.model.CompletedDirectoryDownload;
+import software.amazon.awssdk.transfer.s3.model.DirectoryDownload;
+import software.amazon.awssdk.transfer.s3.model.DownloadDirectoryRequest;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+import software.amazon.awssdk.core.ResponseBytes;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +41,16 @@ public class FileServlet2 extends HttpServlet {
         String cloudcubeSecretAccessKey = env.get("CLOUDCUBE_SECRET_ACCESS_KEY");
         String cloudcubeUrl = env.get("CLOUDCUBE_URL");
 
+        System.setProperty("aws.accessKeyId", System.getenv("CLOUDCUBE_ACCESS_KEY_ID"));
+        System.setProperty("aws.secretAccessKey", System.getenv("CLOUDCUBE_SECRET_ACCESS_KEY"));
+
+        // 試しに組み込み
+        S3Client s3Client =
+                S3Client.builder()
+                        .credentialsProvider(DefaultCredentialsProvider.create())
+                        .region(Region.US_EAST_1)
+                        .build();
+
         resp.setContentType("text/html;charset=UTF-8");
 
         ServletOutputStream out = resp.getOutputStream();
@@ -38,19 +63,6 @@ public class FileServlet2 extends HttpServlet {
         tmp = req.getPathInfo();
         out.write("<br /><h2>pathInfo</h2><hr />".getBytes("UTF-8"));
         out.write(tmp.getBytes("UTF-8"));
-
-        out.write("<br /><h2>parameter</h2><hr />".getBytes("UTF-8"));
-        Enumeration<String> parameterNames = req.getParameterNames();
-        while (parameterNames.hasMoreElements()) {
-            tmp = parameterNames.nextElement();
-            String[] paramVals = req.getParameterValues(tmp);
-            if (paramVals != null) {
-                for (String v : paramVals) {
-                    String p = tmp + " : " + v + "<br />\n";
-                    out.write(p.getBytes("UTF-8"));
-                }
-            }
-        }
 
         out.write("<hr />".getBytes("UTF-8"));
 

@@ -94,10 +94,10 @@ public class FileServlet2 extends HttpServlet {
             System.out.println("Successfully obtained bytes from an S3 object");
             os.close();
 
-             */
 
         } catch (IOException ex) {
             ex.printStackTrace();
+             */
         } catch (S3Exception e) {
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);

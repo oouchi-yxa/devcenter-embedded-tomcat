@@ -11,7 +11,7 @@ import java.util.Enumeration;
 import java.util.Map;
 
 @WebServlet(
-        name = "FileServlet",
+        name = "FileServlet2",
         urlPatterns = {"/file2/*"}
 )
 public class FileServlet2 extends HttpServlet {

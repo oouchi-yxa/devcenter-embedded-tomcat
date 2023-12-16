@@ -73,7 +73,7 @@ public class FileServlet2 extends HttpServlet {
             ListObjectsRequest listObjects = ListObjectsRequest
                     .builder()
                     .bucket(bucket)
-                    .prefix(basePrefix)
+                    .prefix(basePrefix + "test1/")
                     .build();
 
             ListObjectsResponse res = s3Client.listObjects(listObjects);

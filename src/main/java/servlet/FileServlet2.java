@@ -28,6 +28,8 @@ import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(
         name = "FileServlet2",
@@ -57,6 +59,14 @@ public class FileServlet2 extends HttpServlet {
                         .build();
 
         try {
+            // 設定値取り出し
+            Pattern p = Pattern.compile("^https://(.*)\\.s3\\.amazonaws\\.com/(.*)$");
+            Matcher m = p.matcher(cloudcubeUrl);
+            if (m.find()){
+                System.out.println(m.group(1));  // 123
+                System.out.println(m.group(2));  // 4567
+            }
+
             // https://cloud-cube-us2.s3.amazonaws.com/yygxgacc5b8a
             ListObjectsRequest listObjects = ListObjectsRequest
                     .builder()

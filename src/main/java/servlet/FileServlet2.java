@@ -64,7 +64,6 @@ public class FileServlet2 extends HttpServlet {
                     .prefix("yygxgacc5b8a/")
                     .build();
 
-            /*
             ListObjectsResponse res = s3Client.listObjects(listObjects);
             List<S3Object> objects = res.contents();
             for (S3Object myValue : objects) {
@@ -72,6 +71,7 @@ public class FileServlet2 extends HttpServlet {
                 System.out.print("\n The owner is " + myValue.owner());
             }
 
+            /*
             System.out.print("\n data get 0");
 
             GetObjectRequest objectRequest = GetObjectRequest

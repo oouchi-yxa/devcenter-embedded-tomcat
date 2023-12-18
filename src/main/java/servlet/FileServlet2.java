@@ -66,14 +66,14 @@ public class FileServlet2 extends HttpServlet {
             String basePrefix = "";
             if (m.find()){
                 bucket = m.group(1);
-                basePrefix = m.group(2) + "/";
+                basePrefix = m.group(2);
             }
 
-            // https://cloud-cube-us2.s3.amazonaws.com/yygxgacc5b8a
+            // リスト参照
             ListObjectsRequest listObjects = ListObjectsRequest
                     .builder()
                     .bucket(bucket)
-                    .prefix(basePrefix + "test1/")
+                    .prefix(basePrefix + req.getPathInfo())
                     .build();
 
             ListObjectsResponse res = s3Client.listObjects(listObjects);

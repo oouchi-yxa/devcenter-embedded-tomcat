@@ -16,10 +16,10 @@
 <input type="submit">
 </form>
 
-<a href="/file/xxx/yyy/zzz/a.gif?a=b&b=c">S3アクセス用のパス指定（"/file/xxx/yyy/zzz/a.gif?a=b&b=c"）</a>
+<a href="/file/xxx/yyy/zzz/a.gif?a=b&b=c">S3アクセス用のパス指定確認（"/file/xxx/yyy/zzz/a.gif?a=b&b=c"）</a>
 <hr />
 
-<a href="/file2/sample.txt">S3アクセス用のパス指定2（"/sample.txt"）</a>
+<a href="/file2/test1/">S3アクセス用のパス指定2</a>
 <hr />
 
 </body>

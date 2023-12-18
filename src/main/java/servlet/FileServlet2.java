@@ -88,6 +88,10 @@ public class FileServlet2 extends HttpServlet {
 
             ListObjectsResponse res = s3Client.listObjects(listObjects);
             List<S3Object> objects = res.contents();
+            if (objects.size() == 0) {
+                tmp = "<br /> " + req.getPathInfo() +  " is empty. "
+                out.write(tmp.getBytes("UTF-8"));
+            }
             for (S3Object myValue : objects) {
                 System.out.print("\n The name of the key is " + myValue.key());
                 System.out.print("\n The owner is " + myValue.owner());
@@ -95,7 +99,7 @@ public class FileServlet2 extends HttpServlet {
                 tmp = "<br /> The name of the key is " + myValue.key();
                 out.write(tmp.getBytes("UTF-8"));
 
-                tmp = "br /> The owner is " + myValue.owner();
+                tmp = "<br /> The owner is " + myValue.owner();
                 out.write(tmp.getBytes("UTF-8"));
             }
 

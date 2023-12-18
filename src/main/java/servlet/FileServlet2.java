@@ -51,6 +51,16 @@ public class FileServlet2 extends HttpServlet {
         System.setProperty("aws.accessKeyId", System.getenv("CLOUDCUBE_ACCESS_KEY_ID"));
         System.setProperty("aws.secretAccessKey", System.getenv("CLOUDCUBE_SECRET_ACCESS_KEY"));
 
+        resp.setContentType("text/html;charset=UTF-8");
+        req.setCharacterEncoding("UTF-8");
+
+        ServletOutputStream out = resp.getOutputStream();
+        String tmp = "";
+
+        tmp = "<h1>" + req.getPathInfo() + "</h1>";
+        out.write(tmp.getBytes("UTF-8"));
+        out.write("<hr />".getBytes("UTF-8"));
+
         // 試しに組み込み
         S3Client s3Client =
                 S3Client.builder()
@@ -81,6 +91,12 @@ public class FileServlet2 extends HttpServlet {
             for (S3Object myValue : objects) {
                 System.out.print("\n The name of the key is " + myValue.key());
                 System.out.print("\n The owner is " + myValue.owner());
+
+                tmp = "<br /> The name of the key is " + myValue.key();
+                out.write(tmp.getBytes("UTF-8"));
+
+                tmp = "br /> The owner is " + myValue.owner();
+                out.write(tmp.getBytes("UTF-8"));
             }
 
             /*
@@ -114,27 +130,6 @@ public class FileServlet2 extends HttpServlet {
             System.err.println(e.awsErrorDetails().errorMessage());
             System.exit(1);
         }
-
-
-        resp.setContentType("text/html;charset=UTF-8");
-
-        ServletOutputStream out = resp.getOutputStream();
-        out.write("<h1>ファイル サンプル</h1><br />\n".getBytes("UTF-8"));
-
-        String tmp = "";
-
-        req.setCharacterEncoding("UTF-8");
-
-        tmp = req.getPathInfo();
-        out.write("<br /><h2>pathInfo</h2><hr />".getBytes("UTF-8"));
-        out.write(tmp.getBytes("UTF-8"));
-
-        out.write("<hr />".getBytes("UTF-8"));
-
-        tmp = "" + cloudcubeAccessKeyId + ":" + cloudcubeUrl + ":" + cloudcubeSecretAccessKey;
-
-        out.write(tmp.getBytes("UTF-8"));
-
 
         out.flush();
         out.close();

@@ -89,7 +89,7 @@ public class FileServlet2 extends HttpServlet {
             ListObjectsResponse res = s3Client.listObjects(listObjects);
             List<S3Object> objects = res.contents();
             if (objects.size() == 0) {
-                tmp = "<br /> " + req.getPathInfo() +  " is empty. "
+                tmp = "<br /> " + req.getPathInfo() +  " is empty. ";
                 out.write(tmp.getBytes("UTF-8"));
             }
             for (S3Object myValue : objects) {

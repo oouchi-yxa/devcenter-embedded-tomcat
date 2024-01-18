@@ -16,12 +16,6 @@
 <input type="submit">
 </form>
 
-<a href="/file/xxx/yyy/zzz/a.gif?a=b&b=c">S3アクセス用のパス指定確認（"/file/xxx/yyy/zzz/a.gif?a=b&b=c"）</a>
-<hr />
-
-<a href="/file2/test1/">S3アクセス用のパス指定2</a>
-<hr />
-
 <form method="POST" action="/webhook">
 <input type="text" name="arg1" value="wテストデータ１">
 <input type="text" name="arg2" value="wテストデータ２">
